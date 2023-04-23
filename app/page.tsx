@@ -34,7 +34,6 @@ export default function Home() {
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    console.log(e.target.name, data)
     setData({ ...data, [e.target.name]: e.target.value })
   }
 
