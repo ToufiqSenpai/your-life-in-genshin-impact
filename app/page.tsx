@@ -1,12 +1,15 @@
+'use client'
 import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const handleSubmit = (e: HTMLFormElement): void => {
+  const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault()
 
   }
-  
+
+
   return (
     <form className="max-w-md max-mobile:max-w-[95%] m-auto h-max absolute top-0 bottom-0 left-0 right-0 bg-white shadow-1 rounded-lg py-3 px-4">
       <h1 className='text-center font-medium text-xl'>Your life in Genshin Impact</h1>
