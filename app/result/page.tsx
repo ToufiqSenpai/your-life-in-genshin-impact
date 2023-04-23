@@ -1,5 +1,10 @@
 import DownloadImage from "./DownloadImage"
 
+export const metadata = {
+  title: 'Your life in Genshin Impact | Result',
+  description: 'Diagnose your life in Teyvat'
+}
+
 async function getDiagnose(name: string, gender: string) {
   return fetch(`${process.env.APP_URL}/api/diagnose?name=${name}&gender=${gender}`, { method: "GET", cache: 'no-store' })
     .then(response => response.json())
