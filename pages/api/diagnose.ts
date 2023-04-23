@@ -44,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       })
     }
   
-    const availableDiagnose = await Diagnose.find({ name: body.name })
+    const availableDiagnose = await Diagnose.find({ name: body.name, gender: body.gender })
   
     if (availableDiagnose.length == 0) {
       await diagnose.save()
@@ -65,14 +65,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     return res.status(409).json({ status: 409, message: 'The name already available' })
   } else if(req.method?.toUpperCase() == 'GET') {
-    const diagnose = Diagnose.findOne({ name: req.query.name || '' }).sort({ createdAt: -1 })
+    const diagnose = await Diagnose.findOne({ name: req.query.name, gender: req.query.gender}).sort({ createdAt: -1 })
 
     if(!diagnose) {
       return res.status(404).json({ status: 404, message: 'Data not found'})
     }
 
     return res.status(200).json({
-      status: 'Ok',
+      status: 200,
       data: diagnose
     })
   }
